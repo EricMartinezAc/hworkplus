@@ -37,7 +37,7 @@ export const resolvers = {
       try {
         const FindPreSavePerson = await PersonSchema.find({ tIdent, nIdent });
         if (FindPreSavePerson.length !== 0)
-          throw new Error(`it was found ${FindPreSavePerson[0].name} (1.1)`);
+          throw new Error(`it ${FindPreSavePerson[0].name} has not been found (1.1)`);
         const res = new PersonSchema({
           name,
           lastname,

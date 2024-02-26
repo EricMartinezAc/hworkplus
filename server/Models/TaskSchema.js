@@ -6,18 +6,20 @@ const TaskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    projecID: {
+    id_project: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Project",
       required: true,
     },
-    userID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    body: {
+      type: String,
       required: true,
+      min: 100,
     },
+    status: { type: String, required: true },
+    priority: { type: Number, required: true },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Task", TaskSchema);
+export default mongoose.model("Tasks", TaskSchema);

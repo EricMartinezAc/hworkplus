@@ -4,7 +4,7 @@ const PersonSchema = new mongoose.Schema(
   {
     name: { type: String, match: /[a-z]/, required: true },
     lastname: { type: String, match: /[a-z]/, required: true },
-    birthDate: { type: Date, required: true },
+    birthDate: { type: String, required: true },
     tIdent: { type: String, required: true },
     nIdent: { type: Number, required: true },
     country: { type: String, default: "Colombia" },
@@ -17,4 +17,4 @@ const PersonSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Person", PersonSchema);
+export default mongoose.model("Persons", PersonSchema);

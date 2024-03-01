@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema(
     id_product: { type: String, required: true, ref: "Products" },
     user: { type: String, min: 20, match: /[a-z]/ },
     psw: { type: String, min: 20, match: /[a-z]/ },
+    status: { type: Number, required: true, default: 0 },
   },
   { timestamps: true }
 );

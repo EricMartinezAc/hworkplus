@@ -20,7 +20,7 @@ export const typeDefs = gql`
       birthDate: String
       tIdent: String!
       nIdent: Int!
-      country: String
+      country: String!
       city: String
       location: String
       nTel: Int
@@ -32,8 +32,8 @@ export const typeDefs = gql`
       name: String
       lastname: String
       birthDate: String
-      tIdent: String
-      nIdent: Int
+      tIdent: String!
+      nIdent: Int!
       country: String
       city: String
       location: String
@@ -43,64 +43,73 @@ export const typeDefs = gql`
     ): Person
     deletePerson(_id: ID!): Person
 
-    createProduct(cliente: String!, email: String!, psw: String!): Product
+    createProduct(
+      cliente: String!
+      email: String!
+      psw: String!
+      status: Int
+    ): Product
     editProduct(
       _id: ID!
       cliente: String!
       email: String!
       psw: String!
+      status: Int!
     ): Product
     deleteProduct(_id: ID!): Product
 
     createProject(
       id_user: ID!
       tittle: String!
-      body: String
-      status: String
-      Priority: Int
+      body: String!
+      status: Int!
+      Priority: Int!
     ): Project
     editProject(
       _id: ID!
       id_user: ID!
       tittle: String!
       body: String
-      status: String
+      status: Int
       Priority: Int
     ): Project
     deleteProject(_id: ID!): Project
 
     createTask(
       tittle: String!
-      id_project: String!
+      id_user: ID!
+      id_project: ID!
       body: String!
-      status: String!
+      status: Int!
       priority: Int!
     ): Task
     editTask(
       _id: ID!
       tittle: String
-      id_project: ID
+      id_user: ID!
+      id_project: ID!
       body: String
-      status: String
       priority: Int
+      status: Int
     ): Task
     deleteTask(_id: ID!): Task
 
     createUser(
-      id_person: String!
-      id_product: String!
-      status: Boolean!
+      id_person: ID!
+      id_product: ID!
       user: String!
       psw: String!
+      status: Int!
     ): User
     editUser(
       _id: ID!
-      id_person: String
-      id_product: String
+      id_person: ID!
+      id_product: ID!
       user: String
       psw: String
-    ): Task
-    deleteUser(_id: ID!): Task
+      status: Int
+    ): User
+    deleteUser(_id: ID!): User
   }
   type Person {
     _id: ID
@@ -123,6 +132,7 @@ export const typeDefs = gql`
     cliente: String
     email: String
     psw: String
+    status: Int
     createdAt: String
     updatedAt: String
   }
@@ -131,7 +141,7 @@ export const typeDefs = gql`
     id_user: ID
     tittle: String
     body: String
-    status: String
+    status: Int
     Priority: Int
     createdAt: String
     updatedAt: String
@@ -139,20 +149,21 @@ export const typeDefs = gql`
   type Task {
     _id: ID
     tittle: String
-    id_project: String
+    id_user: ID
+    id_project: ID
     body: String
-    status: String
+    status: Int
     priority: Int
     createdAt: String
     updatedAt: String
   }
   type User {
     _id: ID
-    id_person: String
-    id_product: String
-    status: Boolean
+    id_person: ID
+    id_product: ID
     user: String
     psw: String
+    status: Int
     createdAt: String
     updatedAt: String
   }
